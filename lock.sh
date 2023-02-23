@@ -1,1 +1,1 @@
-i3lock -fec "#707070"
+i3lock -feuc "#2a3c3c"
