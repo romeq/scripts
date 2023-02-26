@@ -99,7 +99,7 @@ if [ "$1" = "-o" ]; then
     if cryptsetup isLuks "$DISK"; then
         open_encrypted_disk
     else
-        friendly_mount "$DISK"
+        angryfriendly_mount "$DISK"
     fi
 elif [ "$1" = "-c" ]; then
     close_disk
