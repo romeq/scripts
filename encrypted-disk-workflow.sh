@@ -96,6 +96,12 @@ if [ "$#" -ne 1 ]; then
 fi
 
 if [ "$1" = "-o" ]; then
+    # check perms
+    if [ ! -b "$DISK" ] || [ ! -r "$DISK" ] || [ ! -w "$DISK" ]; then
+        angry_echo "Not enough permissions to access disk"
+        exit 1
+    fi
+
     if cryptsetup isLuks "$DISK"; then
         open_encrypted_disk
     else
