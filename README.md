@@ -1,70 +1,72 @@
 # Scripts
 
- This repository contains some random scripts that I've created. They are most often motivated by annoyment about doing things constantly again and not having a simple method to do so.  
+This repository contains some random scripts that I've created. They are most often motivated by annoyment about doing things constantly again and not having a simple method to do so.
 
-Most of these are also first thought to be project ideas, but after a while of thinking about it I've come to the conclusion that it's better that they are only implemented as simple shellscripts. 
-
-
+Most of these are also first thought to be project ideas, but after a while of thinking about it I've come to the conclusion that it's better that they are only implemented as simple shellscripts.
 
 ## Root folder
 
 Repository root folder contains the most important and boring scripts
 
-- ### Somewhat cryptography or privacy related
+- ### Somewhat cryptography, disk or privacy related
 
-  - ##### `backup.sh`
+  - `encrypted-disk-workflow.sh`
 
-    `backup.sh` is my desperate way of backing up my files.
+    Probably the most unnecessary thing ever. Opens and mounts and closes and unmounts encrypted drives. 
 
-    Basically all it does is decrypts given disk with `cryptsetup`, mounts it to a temporary directory, copies contents of the folder you specify to the disk and then unmounts the directory. 
+    Takes in `-c`= close and unmount drive or `-o` = open and mount drive.
+    Controlled by following environment variables:
 
+    - `DISK`: disk to open
+    - `MOUNTPATH`: base mount path, default is `/mnt`, directory where mount is going to be done is automatically created as subfolder
+    - `SCRIPTMODE`: decides if there is verbose output, `0`=yes, `1=no`
 
-    <img src="./assets/backup.sh.png" alt="image-20230224013130858" style="width:500px;" />
+    ![image-20230226162155460](/home/toke/scripts/assets/encrypted-script-workflow.sh.png)
 
-  
+  -   `backup.sh` is my desperate way of backing up my files.
 
-  - `encrypt.sh` and `decrypt.sh`
+      Basically all it does is decrypts given disk with `cryptsetup`, mounts it to a temporary directory, copies contents of the folder you specify to the disk and then unmounts the directory.
 
-    - `encrypt.sh` creates a new tarball with files and encrypts it with openssl, leaving you with an encrypted tarball
+      <img src="./assets/backup.sh.png" alt="image-20230224013130858" style="width:500px;" />
 
-    - `decrypt.sh` decrypts an existing encrypted tarball and extracts it into a temporary folder.
+  -   `encrypt.sh` and `decrypt.sh`
 
+      -   `encrypt.sh` creates a new tarball with files and encrypts it with openssl, leaving you with an encrypted tarball
 
-      
-      <img src="./assets/encrypt-decrypt.sh.png" alt="encrypt-decrypt-preview" style="width:500px;" />
+      -   `decrypt.sh` decrypts an existing encrypted tarball and extracts it into a temporary folder.
 
- 
+          <img src="./assets/encrypt-decrypt.sh.png" alt="encrypt-decrypt-preview" style="width:500px;" />
 
-- #### Chromium apps
+-   #### Chromium apps
 
-  - ##### `discord-chromium.sh`
+    -   `discord-chromium.sh`
 
-    Completely stolen from https://github.com/turtleb01
-    Starts discord as a chromium application so it can't spy on you that much
+        Completely stolen from https://github.com/turtleb01
+        Starts discord as a chromium application so it can't spy on you that much
 
-  - ##### `whatsapp-chromium.sh`
+    -   `whatsapp-chromium.sh`
 
-    Improvised from `discord-chromium.sh`.
-    Starts https://web.whatsapp.com as a chromium application.
+        Improvised from `discord-chromium.sh`.
+        Starts https://web.whatsapp.com as a chromium application.
 
-- ####  Other helping hands
+-   #### Other helping hands
 
-  - #### `go-project-init.sh`
+    -   `go-project-init.sh`
 
-    Initialize a new go project
+        Initialize a new go project
 
-    - Initialize `go.mod`
-    - Copy a MIT license from user data directory and replace author per arguments
+        -   Initialize `go.mod`
+        -   Copy a MIT license from user data directory and replaces author per argument
 
-  - #### `save-battery-mode.sh`
+    -   `save-battery-mode.sh`
 
-    Closes all unneeded processes (currently just hardcoded, including some of my most expensive applications)
+        Closes all unneeded processes (currently just hardcoded, including some of my most expensive applications)
 
-  - #### `lock.sh`
+    -   `lock.sh`
 
-    This script simply locks my desktop. It's in the scripts folder so that I can call it wherever I want and I still get the same login experience.
+        This script simply locks my desktop. It's in the scripts folder so that I can call it wherever I want and I still get the same login experience.
 
 ## `bar/`
 
-`bar/` folder includes some scripts to query specific information from the operating system and show them in my status bar. 
+`bar/` folder includes some scripts to query specific information from the operating system and show them in my status bar.
 I'll not get into them more, as they are probably only best suitable for my use - the design is a bit rough.
